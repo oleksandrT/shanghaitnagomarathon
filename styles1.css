@@ -1,0 +1,52 @@
+html, body, .wrapper {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	background: url('background-image.jpg');
+	font-family: Helvetica;
+}
+
+.titleHome {
+	position: absolute;
+	top: 35vh;
+	background-color: #FFE24A;
+	height: 180px;
+	width: 100%;
+	text-align: center;
+	opacity: 0.55;
+}
+
+ul.links {
+	padding-top: 61.5vh;
+}
+
+ul.links li {	
+	display: block;
+	height: 36px;
+	float: left;
+	text-align: center;
+	padding: 14px 3.5% 0;
+}
+
+ul.links li:hover {
+	background-color: #b0b0b0;
+	opacity: 0.7;
+}
+
+ul.links li a {
+	color: #fff;
+	font-weight: bold;
+}
