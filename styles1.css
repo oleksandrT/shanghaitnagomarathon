@@ -1,3 +1,4 @@
+/* Reset */
 html, body, .wrapper {
 	margin: 0;
 	padding: 0;
@@ -14,14 +15,25 @@ a {
 	text-decoration: none;
 }
 
+/* Common styles */
+h1 {font-size: 3em; margin: 0;}
+h2 {margin: 20px 0 0;}
+h4 {letter-spacing: 0.2em;}
+
+/* Unique styles */
+
 .wrapper {
-	background: url('background-image.jpg');
+	background: url('background-image.jpg') no-repeat;
 	font-family: Helvetica;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .titleHome {
 	position: absolute;
-	top: 35vh;
+	top: 300px;
 	background-color: #FFE24A;
 	height: 180px;
 	width: 100%;
@@ -30,7 +42,7 @@ a {
 }
 
 ul.links {
-	padding-top: 61.5vh;
+	padding-top: 480px;
 }
 
 ul.links li {	
@@ -38,7 +50,9 @@ ul.links li {
 	height: 36px;
 	float: left;
 	text-align: center;
-	padding: 14px 3.5% 0;
+	padding: 14px 0 0;
+	width: 14.2857%;
+	cursor: pointer;
 }
 
 ul.links li:hover {
