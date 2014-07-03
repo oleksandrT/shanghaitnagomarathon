@@ -63,6 +63,32 @@ a.videoLink {
 
 .bigLogo img {width: 100%;}
 
+.langSelect {
+	position: absolute; 
+	right: 1.5%; 
+	top: 1.5%; 
+	color: #fff;
+}
+
+.langSelect a {
+	color: #eb2323;
+}
+
+.tangogo {
+	position: absolute;
+	right: 1.5%; 
+	bottom: 1.5%;
+	font-size: 1.4em;
+}
+
+.tangogo a {
+	color: #fff;
+	background: url('img/tangogo-logo.png') no-repeat;
+	text-indent: -99999px;
+	width: 100px;
+	height: 21px;
+	display: block;
+}
 
 /* ============================================================================================================= */
 
