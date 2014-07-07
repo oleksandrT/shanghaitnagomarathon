@@ -27,12 +27,29 @@ a {
 	color: #5A5B54;
 }
 
+fieldset {
+	border: 0;
+}
+
+legend {
+	color: #eb2323;
+}
+
 h1 {font-size: 2em; margin: 0;} /* was 4em */
 h2 {font-size: 1em; letter-spacing: 0.2em; margin: 0;} /* was 2 em */
 h4 {font-size: .8em; letter-spacing: 0.3em;}
 
 .hidden {
 	display: none!important;
+}
+
+.clearFix {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }
 
 a.videoLink {
@@ -229,6 +246,167 @@ p.phone {
 	background-position-x: 8px;
 }
 
+/* ============= Registration page ================= */
+.error {
+	color: #eb2323;
+	display: block;
+	font-size: .8em;
+}
+
+fieldset {
+	margin-bottom: 20px;
+	background-color: #c0c0c0;
+}
+
+.formBlock {
+	margin-bottom: 20px;
+	background-color: #d8d8d8;
+	padding: 10px;
+}
+
+.formBlock p {
+	font-weight: bold;
+	margin-top: 0;
+}
+
+.registrForm {
+	margin-top: 20px;
+}
+
+.registrForm input[type="text"], .registrForm input[type="email"],.registrForm input[type="tel"] {
+	width: 99%;
+}
+
+.registrForm select#packageClass, .registrForm select#packageMilonga {
+	width: 100%;
+}
+
+.registrForm input[type="submit"] {
+	padding:  7px 14px;
+	background-color: #eb2323;
+	border: 0;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+textarea {
+	width: 99%;
+}
+
+div.inputLine, div.checkboxGroup {
+	margin-top: 10px;
+}
+
+div.checkboxGroup span {
+	border-bottom: 1px solid;
+	display: block;
+}
+
+/*div.leftFormColumn {
+	float: left;
+	width: 30%;
+	margin-right: 2%;
+}
+
+div.rightFormColumn {
+	float: left;
+	width: 66%;
+	margin-right: 2%;
+}*/
+
+.priceTables {
+	padding: 20px;
+}
+
+.priceTables p {
+	font-weight: bold;
+}
+
+.priceTables table {
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+.priceTables table td {
+	padding: 5px 10px;
+}
+
+.priceTables table td.price {
+	width: 30%;
+	text-align: center;
+}
+
+th {
+	font-weight: normal;
+	vertical-align: top;
+}
+
+th.noBorder {
+	border: 0;
+}
+
+th.bestPrice, td.bestPrice {
+	background-color: rgba(255, 224, 0, 0.51);
+}
+
+.priceToPay {
+	margin-bottom: 20px;
+	background-color: #5F5F5F;
+	padding: 10px;
+	color: #fff;
+}
+
+/* ========== Admin page ===============*/
+
+.blockRegister {
+	padding: 20px;
+}
+
+.blockRegister table {
+	border-collapse: collapse;
+}
+
+.blockRegister table td {
+	padding: 0 3px;
+	text-align: center;
+	font-size: .9em;
+}
+
+.blockRegister table td.notPaid {
+	background-color: rgba(235, 35, 35, 0.7);
+}
+
+/* ======== About person admin page =============*/
+.personInfo p {
+	font-weight: bold;
+}
+
+.personInfo table {
+	margin-bottom: 20px;
+}
+
+.personInfo table td {
+	border: 1px solid;
+	text-align: left;
+	padding: 5px;
+}
+
+.personInfo button {
+	background-color: #5F5F5F;
+	padding: 10px;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+}
+
+.personInfo button:active {
+	background-color: #333;
+}
+
+
+/* ============= Media queries =============== */
+
 @media (min-width: 500px) {
 	.logo img {
 		width: auto;
@@ -240,8 +418,16 @@ p.phone {
 
 	.blockImage {
 		display: inline-block;
-		width: 45%;
+		width: 41%;
 		overflow: hidden;
+		padding: 20px 2%;
+	}
+
+	.priceTables {
+		display: inline-block;
+		width: 31%;
+		overflow: hidden;
+		padding: 20px 2%;
 	}
 
 	.blockImage img {
@@ -254,6 +440,13 @@ p.phone {
 		display: inline-block;
 		width: 54%;
 		vertical-align: top;
+	}
+
+	.blockRegister {
+		display: inline-block;
+		width: 58%;
+		vertical-align: top;
+		padding: 20px;
 	}
 
 	.innerBlock {
@@ -295,9 +488,10 @@ p.phone {
 		padding-top: 20px;
 	}
 
-	.block {
-		margin-bottom: 0;
-	}
+	/* on laptop screen no need to do this */
+	/*.block {
+		margin-bottom: 0; 
+	}*/
 
 	.bigLogo { 
 		width: 30%; 
@@ -328,6 +522,24 @@ p.phone {
 		padding-left: 125px;
 	}
 
+	div.leftFormColumn {
+		float: left;
+		width: 30%;
+		margin-right: 2%;
+	}
+
+	div.rightFormColumn {
+		float: left;
+		width: 66%;
+		margin-right: 2%;
+	}
+
+}
+
+@media (min-width: 1400px) {
+	.blockRegister {
+		width: 61%;
+	}
 }
 
 @media (min-width: 1700px) {
@@ -338,4 +550,5 @@ p.phone {
 	.blockImage {
 		height: 600px;
 	}
+
 }
