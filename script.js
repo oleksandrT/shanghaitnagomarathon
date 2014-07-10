@@ -102,27 +102,30 @@ $(document).ready( function() {
     });
 
     /* Load data to admin main page */
+    /* All people table */
     var totalPeople = people.length;
     for (var i = 0; i < totalPeople; i++) {
     	var row = document.createElement("tr");
     	for (var key in people[i]) {
     		var marked = false;
-    		var cell = document.createElement("td");
-    		if (key == "name") {
-    			var linkTag = document.createElement("a"),
-    				hrefVal = "list/" + people[i][key] + ".html";	
-    			$(linkTag).attr("href", hrefVal);
-    			$(linkTag).css("color", "#eb2323");
-    			$(linkTag).html( people[i][key] );
-    			$(cell).append(linkTag)
-    		} else {
-    			$(cell).html( people[i][key] );
-    		};
-    		$(row).append(cell);
+    		if ( key != "email" && key != "phone" ) {
+	    		var cell = document.createElement("td");
+	    		if (key == "name") {
+	    			var linkTag = document.createElement("a"),
+	    				hrefVal = "list/" + people[i][key] + ".html";	
+	    			$(linkTag).attr("href", hrefVal);
+	    			$(linkTag).css("color", "#eb2323");
+	    			$(linkTag).html( people[i][key] );
+	    			$(cell).append(linkTag)
+	    		} else {
+	    			$(cell).html( people[i][key] );
+	    		};
+	    		$(row).append(cell);
 
-    		if ( key == "paid" && people[i][key] == "no" ) {
-    			marked = true;
-    		};
+	    		if ( key == "paid" && people[i][key] == "no" ) {
+	    			marked = true;
+	    		};
+	    	};
     	};
 
     	if ( marked == true ) {
@@ -131,6 +134,128 @@ $(document).ready( function() {
 
     	$('.admin table').append(row);
     };
+
+    /* classes table */
+    var totalClasses = classesTitles.length;
+    for (var i = 0; i < totalClasses; i++) {
+    	
+    	/* class title */
+    	var row = document.createElement("tr");    	
+	    var cell = document.createElement("td");
+	    $(cell).css('textAlign', 'left');
+	    $(cell).html(classesTitles[i]);
+
+	    /* max leaders */  	
+	    var cell1 = document.createElement("td");
+	    $(cell1).html("20");
+	    $(row).append(cell);
+	    $(row).append(cell1);
+
+	    /* max followers */
+	    var cell2 = document.createElement("td");
+	    $(cell2).html("20");
+	    $(row).append(cell2);
+
+	    /* leaders */
+	    var cell3 = document.createElement("td");
+	    var counterL = 0;
+	    for (var j = 0; j < totalPeople; j++) {
+    		if ( people[j].gender == 'Leader' && $.inArray( classesShorts[i], people[j].classes) != -1 ) {
+    			counterL++;
+    		};
+    	};
+		$(cell3).html(counterL	);
+	    $(row).append(cell3);
+
+	    /* followers */
+	    var cell4 = document.createElement("td");
+	    var counterF = 0;
+	    for (var j = 0; j < totalPeople; j++) {
+    		if ( people[j].gender == 'Follower' && $.inArray( classesShorts[i], people[j].classes) != -1 ) {
+    			counterF++;
+    		};
+    	};
+	    $(cell4).html(counterF);
+	    $(row).append(cell4);
+
+	    /* leaders % */
+	    var cell5 = document.createElement("td");
+	    var percentL = 0;
+	    percentL = (counterL/20)*100;
+	    $(cell5).html( percentL );
+	    $(row).append(cell5);
+
+	    /* followers % */
+	    var cell6 = document.createElement("td");
+	    var percentF = 0;
+	    percentF = (counterF/20)*100;
+	    $(cell6).html( percentF );
+	    $(row).append(cell6);
+
+    	$('.classTable table').append(row);
+    };
+
+     /* milonga table */
+    var totalMilongas = milongaTitles.length;
+    for (var i = 0; i < totalMilongas; i++) {
+    	
+    	/* milonga title */
+    	var row = document.createElement("tr");    	
+	    var cell = document.createElement("td");
+	    $(cell).css('textAlign', 'left');
+	    $(cell).html(milongaTitles[i]);
+
+	    /* max leaders */  	
+	    var cell1 = document.createElement("td");
+	    $(cell1).html("200");
+	    $(row).append(cell);
+	    $(row).append(cell1);
+
+	    /* max followers */
+	    var cell2 = document.createElement("td");
+	    $(cell2).html("200");
+	    $(row).append(cell2);
+
+	    /* leaders */
+	    var cell3 = document.createElement("td");
+	    var counterL = 0;
+	    for (var j = 0; j < totalPeople; j++) {
+    		if ( people[j].gender == 'Leader' && $.inArray( milongaShorts[i], people[j].milongas) != -1 ) {
+    			counterL++;
+    		};
+    	};
+		$(cell3).html(counterL	);
+	    $(row).append(cell3);
+
+	    /* followers */
+	    var cell4 = document.createElement("td");
+	    var counterF = 0;
+	    for (var j = 0; j < totalPeople; j++) {
+    		if ( people[j].gender == 'Follower' && $.inArray( milongaShorts[i], people[j].milongas) != -1 ) {
+    			counterF++;
+    		};
+    	};
+	    $(cell4).html(counterF);
+	    $(row).append(cell4);
+
+	    /* leaders % */
+	    var cell5 = document.createElement("td");
+	    var percentL = 0;
+	    percentL = (counterL/200)*100;
+	    $(cell5).html( percentL );
+	    $(row).append(cell5);
+
+	    /* followers % */
+	    var cell6 = document.createElement("td");
+	    var percentF = 0;
+	    percentF = (counterF/200)*100;
+	    $(cell6).html( percentF );
+	    $(row).append(cell6);
+
+    	$('.milongaTable table').append(row);
+    };
+
+
 
     /* Load data to About person admin page */
     var fileName = window.location.pathname.split( '/' ).pop(),
@@ -161,6 +286,9 @@ $(document).ready( function() {
 	    	} else if (key == "paid" && personData[key] == "yes") {
 	    		$(personTableColValue).addClass("paid");
 	    	};
+	    	if ( key == "payment" ) {
+	    		$(personTableColValue).addClass("paymenType");
+	    	};
 	    	$(personTableRow).append(personTableColTitle);
 	    	$(personTableRow).append(personTableColValue);
 
@@ -168,6 +296,35 @@ $(document).ready( function() {
     	};
     };
 
+    /* Payment select */
+    var selectParagraph = document.createElement('p'),
+    	paymentSelect = document.createElement('select'),
+    	optCash = document.createElement('option'),
+    	optBank = document.createElement('option'),
+    	optCard = document.createElement('option'),
+    	optAlipay = document.createElement('option');
+
+    $(optCash).html("Cash");
+    $(optBank).html("Bank");
+    $(optCard).html("Card");
+    $(optAlipay).html("Alipay");
+
+    $(paymentSelect).append(optCash);
+    $(paymentSelect).append(optBank);
+    $(paymentSelect).append(optCard);
+    $(paymentSelect).append(optAlipay);
+    $(selectParagraph).append(paymentSelect);
+    $('.personInfo').append(selectParagraph);
+
+    $(paymentSelect).on('change', function() {
+    	var cellPayment = $('td.paymenType'),
+    		paymentVal = $(paymentSelect).val();
+    	console.log(paymentVal);
+    	$(cellPayment).html(paymentVal);
+    });
+
+
+    /* Buttons */
     var acceptBtn = document.createElement('button'),
     	cancelBtn = document.createElement('button');
     $(acceptBtn).html("accept payment");
@@ -458,4 +615,38 @@ var people = [
 		price: "4780",
 		paid: "yes"
 	}
+];
+
+classesTitles = [
+	'[SR 207] Milonga: change of speed',
+	'[SR 208] Technical training for couples (how to connect better for each other)',
+	'[SR 209] The secrets of embrace: focus on how to create a comfort embrace for tango',
+	'[SR 210] The secrets of embrace: how to manange a comfort embrace in valz dancing',
+	'[SR 211] The secrets of embrace: how to create a embrace especially for tango milonga',
+	'Milena Plebs Special Woman Technique Workshop Part 2',
+	'[SI 106] Waltz: sequences for the waltz accompaniment',
+	'[SR 205] Unusual sacadas of Sebastian y Roxana'
+];
+
+classesShorts = [
+	'classSR207 ',
+	'classSR208 ',
+	'classSR209 ',
+	'classSR210 ',
+	'classSR211 ',
+	'classPlebs2 ',
+	'classSR106 ',
+	'classSR205 '
+];
+
+milongaTitles = [
+	'Vintage milonga',
+	'Carnival milonga',
+	'Loca milonga'
+];
+
+milongaShorts = [
+	'milongaVintage ',
+	'milongaCarnaval ',
+	'milongaLoca '
 ];

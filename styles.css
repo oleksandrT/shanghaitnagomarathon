@@ -377,6 +377,16 @@ th.bestPrice, td.bestPrice {
 	background-color: rgba(235, 35, 35, 0.7);
 }
 
+.admin table th, .classTable table th, .milongaTable table th {
+	padding: 5px 10px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.admin table td, .classTable table td, .milongaTable table td {
+	padding: 5px 10px;
+}
+
 /* ======== About person admin page =============*/
 .personInfo p {
 	font-weight: bold;
